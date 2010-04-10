@@ -1,0 +1,42 @@
+#!/bin/sh
+
+PROJPATH="`dirname $0`"
+cd $PROJPATH
+PIDFILE="`pwd`/pid"
+
+RHOST="127.0.0.1"
+RPORT="8000"
+
+get_pid() {
+    if [ -f $PIDFILE ]; then
+        return "`cat $PIDFILE`"
+    fi
+}
+
+case "$1" in
+    start)
+        get_pid; p=$?
+        if [ "$p" = "0" ]; then
+            ./manage.py runfcgi host=$RHOST port=$RPORT pidfile=$PIDFILE method=prefork minspare=1 maxspare=5 maxchildren=3 maxrequests=40
+            echo "started."
+        else
+            echo "ERROR: already running! (PID = $p)"
+        fi
+        ;;
+    stop)
+        get_pid; p=$?
+        if [ ! "$p" = "0" ]; then
+            kill `cat $PIDFILE`
+            rm $PIDFILE
+            echo "stopped."
+        else
+            echo "ERROR: not running."
+        fi
+        ;;
+    list)
+        ps -e -o pid,user,command | grep 'runfcgi' | grep -v 'grep runfcgi'
+        ;;
+    *)
+        echo "USAGE: ./admin start|stop|list"
+        ;;
+esac
