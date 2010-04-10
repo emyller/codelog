@@ -7,6 +7,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
+    (r'^comments/', include('django.contrib.comments.urls')),
     url(r'^', include(settings.PROJECT_ALIAS + '.core.urls', namespace='core')),
 )
 

@@ -1,13 +1,23 @@
 {% extends 'base.html' %}
 
+{% load comments %}
+
 {% block content %}
 {% for post in post_list %}
+
+{% get_comment_count for post as comments %}
+
 <div class="post">
     <h2 class="post-title">{{ post.title }}</h2>
     <p class="post-posted_at">{{ post.datetime }}</p>
     <div class="post-text">
     <pre>{{ post.text }}</pre>
     </div>
+    <p class="post-comments_count">
+    {% if comments %}{{ comments }} comment{{ comments|pluralize }} posted for this entry.
+    {% else %}No comments yet.{% endif %}
+    <a href="">Write one</a>
+    </p>
 </div>
 {% endfor %}
 {% endblock %}

@@ -21,12 +21,6 @@ html {
     border-bottom: 1px solid #000;
     padding: .1em .3em
 }
-.post-posted_at {
-    color: #666;
-    font-size: .8em;
-    padding: 0 1em;
-    text-align: right
-}
 .post-text {
     background: #333;
     border-radius: 5px;
@@ -36,4 +30,14 @@ html {
     box-shadow: #333 0 0 5px;
     -webkit-box-shadow: #333 0 0 5px;
     -moz-box-shadow: #333 0 0 5px
+}
+.post-posted_at,
+.post-comments_count {
+    color: #666;
+    font-size: .8em;
+    margin: .5em 0;
+    padding: 0 1em
+}
+.post-posted_at {
+    text-align: right
 }
