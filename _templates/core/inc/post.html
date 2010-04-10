@@ -1,4 +1,5 @@
 {% load comments %}
+{% get_comment_count for post as comments %}
 
 <div class="post">
     <h2 class="post-title">
@@ -6,12 +7,29 @@
     </h2>
     <p class="post-posted_at">{{ post.datetime|date:'l, N d, Y - P' }}</p>
     <div class="post-text">
-    <pre>{{ post.text }}</pre>
+        <pre>{{ post.text }}</pre>
     </div>
     <p class="post-comments_count">
-    {% get_comment_count for post as comments %}
-    {% if comments %}{{ comments }} comment{{ comments|pluralize }} posted.
-    {% else %}No comments yet.{% endif %}
-    <a href="">Write one</a>!
+        {% if comments %}{{ comments }} comment{{ comments|pluralize }} posted.
+        {% else %}No comments yet.{% endif %}
+        <a href="">Write one</a>!
     </p>
+    {% if show_comments %}
+    {% get_comment_list for post as comment_list %}
+        {% if comments %}
+        <dl id="comments">
+        {% for comment in comment_list %}
+            <dt>
+            {% if comment.user_url %}
+                <a href="{{ comment.user_url }}">{{ comment.user_name }}</a>
+            {% else %}
+                {{ comment.user_name }}
+            {% endif %}
+                <small>at {{ comment.submit_date|date:'l, N d, Y - P' }}</small>
+            </dt>
+            <dd>{{ comment.comment }}</dd>
+        {% endfor %}
+        </dl>
+        {% endif %}
+    {% endif %}
 </div>

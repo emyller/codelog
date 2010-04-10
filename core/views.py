@@ -16,4 +16,5 @@ def view_post(req, post_id):
         object_id = post_id,
         template_name = 'core/post.html',
         template_object_name = 'post',
+        extra_context = { 'show_comments': True }
     )
