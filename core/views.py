@@ -27,13 +27,13 @@ def latest(req):
         },
     )
 
-def view_post(req, post_id):
-    post = Post.objects.get(pk=post_id)
+def view_post(req, slug):
+    post = Post.objects.get(slug=slug)
     post.views += 1
     post.save()
     return list_detail.object_detail(req,
         queryset = Post.objects.all(),
-        object_id = post_id,
+        object_id = post.pk,
         template_name = 'core/post.html',
         template_object_name = 'post',
         extra_context = { 'show_comments': True },

@@ -3,6 +3,7 @@ from django.db import models
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=100)
     text = models.TextField()
     datetime = models.DateTimeField()
     tags = models.ManyToManyField('Tag', blank=True, related_name='posts')
@@ -15,7 +16,7 @@ class Post(models.Model):
         )
 
     def get_absolute_url(self):
-        return '/post/' + str(self.pk)
+        return '/post/' + self.slug
 
     class Meta:
         ordering = '-datetime',
