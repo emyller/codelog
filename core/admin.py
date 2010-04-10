@@ -3,11 +3,12 @@ from django.contrib import admin
 import models
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = 'title', 'datetime', 'tags_',
+    list_display = 'title', 'datetime', 'views', 'tags_',
     list_filter = 'datetime',
     date_hierarchy = 'datetime'
     search_fields = 'title', 'text',
     prepopulated_fields = { 'slug': ('title',) }
+    readonly_fields = 'views',
 
 admin.site.register(models.Post, PostAdmin)
 
