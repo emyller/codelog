@@ -5,7 +5,7 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     text = models.TextField()
     datetime = models.DateTimeField()
-    tags = models.ManyToManyField('Tag', blank=True)
+    tags = models.ManyToManyField('Tag', blank=True, related_name='posts')
 
     def __unicode__(self):
         return '{title} ({date})'.format(
@@ -16,8 +16,16 @@ class Post(models.Model):
     class Meta:
         ordering = '-datetime',
 
+    ## display methods
+    def tags_(self):
+        return ', '.join([tag[0] for tag in self.tags.values_list('name')])
+
 class Tag(models.Model):
     name = models.CharField(max_length=40)
 
     def __unicode__(self):
         return self.name
+
+    ## display methods
+    def posts_(self):
+        return self.posts.count()
