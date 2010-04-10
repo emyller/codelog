@@ -13,6 +13,9 @@ class Post(models.Model):
             title = self.title
         )
 
+    class Meta:
+        ordering = '-datetime',
+
 class Tag(models.Model):
     name = models.CharField(max_length=40)
 
