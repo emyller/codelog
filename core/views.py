@@ -4,14 +4,14 @@ from django.views.decorators.cache import cache_page
 from django.db.models import Q
 from models import *
 
-@cache_page(5 * 10)
-def latest(req):
+@cache_page(20 * 60)
+def latest(req, tag_name=''):
     posts = Post.objects.all()
     rpp = int(req.GET.get('rpp') or 5)
     page = int(req.GET.get('page') or 1)
 
-    if req.GET.get('tag'):
-        posts = posts.filter(tags__name=req.GET['tag'])
+    if tag_name:
+        posts = posts.filter(tags__name=tag_name)
     if req.GET.get('q'):
         posts = posts.filter(Q(title__icontains=req.GET['q']) | Q(text__icontains=req.GET['q']))
 
@@ -26,6 +26,9 @@ def latest(req):
             'min_display_page': 1 if page - 5 < 0 else page - 5
         },
     )
+
+def tag_view(req, tag_name):
+    return latest(req, tag_name)
 
 def view_post(req, slug):
     post = Post.objects.get(slug=slug)

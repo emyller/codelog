@@ -6,6 +6,7 @@ import views, feeds
 urlpatterns = patterns('core.views',
     url(r'^$', redirect_to, { 'url': 'latest/'}),
     url(r'^latest/$', 'latest', name='home'),
+    url(r'^tag/([\w-]+)$', 'tag_view', name='tag_view'),
     #url(r'^post/(\d+)$', 'view_post', name='post'),
     url(r'^post/([\w-]+)$', 'view_post', name='post'),
 
