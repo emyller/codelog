@@ -1,5 +1,34 @@
-.codehilite { border-radius: 7px }
-.codehilite pre { overflow-x: auto; padding: 1em }
+.codehilite {
+    border-radius: 7px;
+    padding: 1em;
+    position: relative
+}
+.codehilite .tools {
+    position: absolute;
+    right: 0;
+    top: 0
+}
+.codehilite .tools button {
+    background: #ccc;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 3px;
+    padding: 3px 10px
+}
+.codehilite pre, .codehilite textarea {
+    background: transparent
+}
+.codehilite pre {
+    margin: 0;
+    overflow-x: auto
+}
+.codehilite textarea {
+    border: none;
+    color: #fff;
+    font-family: monospace
+}
+
 .codehilite .hll { background-color: #404040 }
 .codehilite  { background: #202020; color: #d0d0d0 }
 .codehilite .c { color: #999999; font-style: italic }

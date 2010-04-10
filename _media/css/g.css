@@ -1,3 +1,5 @@
+* { outline: none }
+
 h1, h2, h3, h4 {
     font-weight: normal
 }
@@ -32,7 +34,6 @@ a {
 .form-submitrow input:focus, .form-submitrow input:hover {
     background: #fff;
     border-color: #69d;
-    outline: none;
     -webkit-box-shadow: #69d 0 0 5px;
 }
 
