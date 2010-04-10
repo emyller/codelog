@@ -2,6 +2,9 @@ html {
     background: #555;
     font-family: 'sans', sans-serif
 }
+body {
+    margin: 0
+}
 
 #m {
     margin: 0 auto;
@@ -13,13 +16,22 @@ html {
     border: 1px solid #aaa;
     border-top: none;
     border-radius: 0 0 5px 5px;
-    color: #ddd;
+    color: #ddd
+}
+#h {
     padding: 1em 2em
 }
 #f {
     border: none;
     border-top: 1px solid #aaa;
-    font-size: .8em
+    border-radius: 0;
+    font-size: .8em;
+    padding: 1em
+}
+
+#h *, #f * {
+    margin: 0;
+    padding: 0
 }
 
 .post {
