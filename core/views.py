@@ -1,12 +1,19 @@
 # -*- coding: utf-8 -*-
 from django.views.generic import list_detail
+from django.db.models import Q
 from models import *
 
 def latest(req):
     posts = Post.objects.all()
     rpp = int(req.GET.get('rpp') or 5)
     page = int(req.GET.get('page') or 1)
-    if req.GET.get('tag'): posts = posts.filter(tags__name=req.GET['tag'])
+
+    if req.GET.get('tag'):
+        posts = posts.filter(tags__name=req.GET['tag'])
+    if req.GET.get('q'):
+        posts = posts.filter(Q(title__icontains=req.GET['q']) | Q(text__icontains=req.GET['q']))
+
+    print posts
     return list_detail.object_list(req,
         queryset = posts,
         paginate_by = rpp,

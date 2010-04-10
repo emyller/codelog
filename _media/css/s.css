@@ -34,6 +34,10 @@ body {
     padding: 0
 }
 
+#search {
+    float: right
+}
+
 .post {
     background: #eee;
     border: 1px solid #000;
@@ -114,7 +118,8 @@ body {
     text-align: center
 }
 #paginator a, #paginator span,
-#paginator input, #paginator select {
+#paginator input, #paginator select,
+#search input {
     background: #222;
     border: 1px solid #999;
     border-radius: 4px;
@@ -124,6 +129,7 @@ body {
 #paginator a:hover,
 #paginator input:hover, #paginator input:focus,
 #paginator select:hover, #paginator select:focus,
+#search input:hover, #search input:focus,
 #feedback-link:hover {
     background-color: #333;
     box-shadow: #69d 0 0 5px;
@@ -137,7 +143,7 @@ body {
 #paginator form {
     display: inline
 }
-#paginator input, #paginator select {
+#paginator input, #paginator select, #search input {
     color: #fff
 }
 
