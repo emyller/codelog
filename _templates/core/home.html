@@ -3,9 +3,9 @@
 {% block content %}
 {% for post in post_list %}
 <div class="post">
-    <h2>{{ post.title }}</h2>
-    <p><small>{{ post.datetime }}</small></p>
-    <div class="post-content">
+    <h2 class="post-title">{{ post.title }}</h2>
+    <p class="post-posted_at">{{ post.datetime }}</p>
+    <div class="post-text">
     {{ post.text }}
     </div>
 </div>
