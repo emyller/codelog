@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls.defaults import *
+from django.conf import settings
 
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
+    url(r'^', include(settings.PROJECT_ALIAS + '.core.urls', namespace='core')),
 )
-
-from django.conf import settings
 
 ## static files
 if not settings.IN_PRODUCTION:
