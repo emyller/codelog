@@ -13,7 +13,7 @@
     <a href="?rpp={{ rpp }}" title="newest posts">First</a>
     <a href="?rpp={{ rpp }}&page={{ page_obj.previous_page_number }}" title="previous page">«</a>
 {% endif %}
-{% for page_number in paginator.page_range %}
+{% for page_number in paginator.page_range|slice:'min_display_page:page+5' %}
     {% if page_number == page %}
     <span>{{ page_number }}</span>
     {% else %}

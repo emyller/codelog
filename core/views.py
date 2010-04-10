@@ -5,13 +5,17 @@ from models import *
 def latest(req):
     posts = Post.objects.all()
     rpp = int(req.GET.get('rpp') or 5)
+    page = int(req.GET.get('page') or 1)
     if req.GET.get('tag'): posts = posts.filter(tags__name=req.GET['tag'])
     return list_detail.object_list(req,
         queryset = posts,
         paginate_by = rpp,
         template_name = 'core/latest.html',
         template_object_name = 'post',
-        extra_context = { 'rpp': rpp },
+        extra_context = {
+            'rpp': rpp,
+            'min_display_page': 1 if page - 5 < 0 else page - 5
+        },
     )
 
 def view_post(req, post_id):
