@@ -10,7 +10,18 @@
 </head>
 <body>
 <div id="m">
+{% block header %}
+<div id="h">
+    <h1><a href="{% url core:home %}">EvandroMyller.blog</a></h1>
+    <p>Random nerdish thoughts.</p>
+</div>
+{% endblock %}
 {% block content %}{% endblock %}
 </div>
+{% block footer %}
+<div id="f">
+    <p>© 7Code</p>
+</div>
+{% endblock %}
 </body>
 </html>

@@ -1,18 +1,17 @@
 {% load comments %}
 {% get_comment_count for post as comments %}
 
-{% url core:post post.pk as current_post %}
-
 <div class="post">
-    <h2 class="post-title">
-        <a href="{{ post_url }}">{{ post.title }}</a>
-    </h2>
+    <h1 class="post-title">
+        <a href="{% url core:post post.pk %}">{{ post.title }}</a>
+    </h1>
     <p class="post-posted_at">{{ post.datetime|date:'l, N d, Y - P' }}</p>
     <div class="post-text">
         <pre>{{ post.text }}</pre>
     </div>
     <p class="post-comments_count{% if show_comments %}-title{% endif %}">
-        {% if comments %}{{ comments }} comment{{ comments|pluralize }} posted. <a href="{{ post_url }}#newcomment">Write one</a>!
+        {% if comments %}{{ comments }} comment{{ comments|pluralize }} posted.
+        <a href="{% url core:post post.pk %}#newcomment">Write one</a>!
         {% else %}No comments yet.{% endif %}
     </p>
     {% if show_comments %}
@@ -41,7 +40,7 @@
             {% get_comment_form for post as form %}
             <form id="comment-new-form" action="{% comment_form_target %}" method="post">
                 {% csrf_token %}
-                <input type="hidden" name="next" value="{{ post_url }}" />
+                <input type="hidden" name="next" value="{% url core:post post.pk %}" />
             {% for field in form %}{% if field.is_hidden %}
                 {{ field }}
             {% endif %}{% endfor %}
