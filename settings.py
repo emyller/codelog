@@ -71,8 +71,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.gzip.GZipMiddleware',
 )
 
-if DEBUG: MIDDLEWARE_CLASSES += 'debug_toolbar.middleware.DebugToolbarMiddleware',
-
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -90,4 +88,5 @@ INSTALLED_APPS = (
     'core',
 )
 
-if not IN_PRODUCTION: INSTALLED_APPS += 'debug_toolbar',
+#if not IN_PRODUCTION: INSTALLED_APPS += 'debug_toolbar',
+#if DEBUG: MIDDLEWARE_CLASSES += 'debug_toolbar.middleware.DebugToolbarMiddleware',
