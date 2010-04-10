@@ -28,6 +28,9 @@ def latest(req):
     )
 
 def view_post(req, post_id):
+    post = Post.objects.get(pk=post_id)
+    post.views += 1
+    post.save()
     return list_detail.object_detail(req,
         queryset = Post.objects.all(),
         object_id = post_id,
