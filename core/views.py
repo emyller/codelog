@@ -2,10 +2,18 @@
 from django.views.generic import list_detail
 from models import *
 
-def home(req):
+def latest(req):
     return list_detail.object_list(req,
         queryset = Post.objects.all(),
         paginate_by = int(req.GET.get('rpp') or 5),
-        template_name = 'core/home.html',
+        template_name = 'core/latest.html',
+        template_object_name = 'post',
+    )
+
+def view_post(req, post_id):
+    return list_detail.object_detail(req,
+        queryset = Post.objects.all(),
+        object_id = post_id,
+        template_name = 'core/post.html',
         template_object_name = 'post',
     )

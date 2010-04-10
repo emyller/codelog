@@ -21,6 +21,9 @@ html {
     border-bottom: 1px solid #000;
     padding: .1em .3em
 }
+.post-title a {
+    color: #000
+}
 .post-text {
     background: #333;
     border-radius: 5px;
