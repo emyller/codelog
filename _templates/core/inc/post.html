@@ -9,7 +9,7 @@
     <div class="post-text">
         <pre>{{ post.text }}</pre>
     </div>
-    <p class="post-comments_count">
+    <p class="post-comments_count{% if show_comments %}-title{% endif %}">
         {% if comments %}{{ comments }} comment{{ comments|pluralize }} posted.
         {% else %}No comments yet.{% endif %}
         <a href="">Write one</a>!
@@ -19,15 +19,18 @@
         {% if comments %}
         <dl id="comments">
         {% for comment in comment_list %}
-            <dt>
-            {% if comment.user_url %}
-                <a href="{{ comment.user_url }}">{{ comment.user_name }}</a>
-            {% else %}
-                {{ comment.user_name }}
-            {% endif %}
-                <small>at {{ comment.submit_date|date:'l, N d, Y - P' }}</small>
-            </dt>
-            <dd>{{ comment.comment }}</dd>
+            <div class="comment">
+                <dt>
+                    <span class="comment-id">{{ forloop.counter }}</span>
+                {% if comment.user_url %}
+                    <a href="{{ comment.user_url }}">{{ comment.user_name }}</a>
+                {% else %}
+                    {{ comment.user_name }}
+                {% endif %}
+                    <small>wrote at {{ comment.submit_date|date:'l, N d, Y - P' }}</small>
+                </dt>
+                <dd>{{ comment.comment }}</dd>
+            </div>
         {% endfor %}
         </dl>
         {% endif %}

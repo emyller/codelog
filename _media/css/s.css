@@ -24,18 +24,20 @@ html {
 .post-title a {
     color: #000
 }
-.post-text {
+.post-text,
+.comment {
     background: #333;
     border-radius: 5px;
     color: #ddd;
-    margin: 8px;
+    margin: .5em;
     padding: 1em;
     box-shadow: #333 0 0 5px;
     -webkit-box-shadow: #333 0 0 5px;
     -moz-box-shadow: #333 0 0 5px
 }
 .post-posted_at,
-.post-comments_count {
+.post-comments_count,
+.post-comments_count-title {
     color: #666;
     font-size: .8em;
     margin: .5em 0;
@@ -43,4 +45,37 @@ html {
 }
 .post-posted_at {
     text-align: right
+}
+
+.post-comments_count-title {
+    font-size: 1.2em;
+    margin: 1.5em .5em .5em .5em;
+    padding: 0
+}
+#comments {
+    margin: .5em
+}
+.comment {
+    background: #444;
+    margin: 0 0 1em 0;
+    position: relative
+}
+.comment dt {
+    font-weight: bold;
+    margin-bottom: .4em
+}
+.comment dt .comment-id {
+    color: #888;
+    position: absolute;
+    right: 5px;
+    top: 3px
+}
+.comment dt small {
+    color: #ccc;
+    font-size: .7em;
+    font-weight: normal
+}
+.comment dd {
+    font-size: .8em;
+    padding-left: 1em
 }
