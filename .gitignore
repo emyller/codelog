@@ -1,5 +1,6 @@
 _media/admin
 _media/js/ga.js
+psettings.py
 *.pyc
 pid
 
