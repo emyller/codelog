@@ -8,4 +8,19 @@
     How sad, no posts here. Let's go <a href="{% url core:home %}">home</a>.
 </div>
 {% endfor %}
+<div id="paginator">
+{% if page_obj.has_previous %}
+    <a href="?rpp={{ rpp }}&page={{ page_obj.previous_page_number }}">Prev</a>
+{% endif %}
+{% for page_number in paginator.page_range %}
+    {% if page_number == page %}
+    <span>{{ page_number }}</span>
+    {% else %}
+    <a href="?rpp={{ rpp }}&page={{ page_number }}">{{ page_number }}</a>
+    {% endif %}
+{% endfor %}
+{% if page_obj.has_next %}
+    <a href="?rpp={{ rpp }}&page={{ page_obj.next_page_number }}">Next</a>
+{% endif %}
+</div>
 {% endblock %}

@@ -4,12 +4,14 @@ from models import *
 
 def latest(req):
     posts = Post.objects.all()
+    rpp = int(req.GET.get('rpp') or 5)
     if req.GET.get('tag'): posts = posts.filter(tags__name=req.GET['tag'])
     return list_detail.object_list(req,
         queryset = posts,
-        paginate_by = int(req.GET.get('rpp') or 5),
+        paginate_by = rpp,
         template_name = 'core/latest.html',
         template_object_name = 'post',
+        extra_context = { 'rpp': rpp },
     )
 
 def view_post(req, post_id):
@@ -18,5 +20,5 @@ def view_post(req, post_id):
         object_id = post_id,
         template_name = 'core/post.html',
         template_object_name = 'post',
-        extra_context = { 'show_comments': True }
+        extra_context = { 'show_comments': True },
     )

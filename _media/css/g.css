@@ -34,7 +34,9 @@ a {
 .form-submitrow input:focus, .form-submitrow input:hover {
     background: #fff;
     border-color: #69d;
+    box-shadow: #69d 0 0 5px;
     -webkit-box-shadow: #69d 0 0 5px;
+    -moz-box-shadow: #69d 0 0 5px
 }
 
 .form-submitrow {

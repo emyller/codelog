@@ -108,3 +108,25 @@ body {
 #comment-new-form {
     margin: 1em
 }
+
+#paginator {
+    margin-bottom: 1em;
+    text-align: center
+}
+#paginator a, #paginator span {
+    background: #222;
+    border: 1px solid #999;
+    border-radius: 4px;
+    display: inline-block;
+    padding: .3em .5em
+}
+#paginator a:hover {
+    background: #333;
+    box-shadow: #69d 0 0 5px;
+    -webkit-box-shadow: #69d 0 0 5px;
+    -moz-box-shadow: #69d 0 0 5px
+}
+#paginator span {
+    background: #666;
+    cursor: default
+}
