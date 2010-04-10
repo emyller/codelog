@@ -1,3 +1,5 @@
 _media/admin
+_media/js/ga.js
 *.pyc
+pid
 
