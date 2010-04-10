@@ -5,10 +5,10 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     text = models.TextField()
     datetime = models.DateTimeField()
-    tags = models.ManyToManyField('Tag')
+    tags = models.ManyToManyField('Tag', blank=True)
 
     def __unicode__(self):
-        return '{date} - {title}'.format(
+        return '{title} ({date})'.format(
             date = self.datetime,
             title = self.title
         )
