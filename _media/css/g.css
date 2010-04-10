@@ -1,11 +1,48 @@
 * { margin: 0; padding: 0 }
 
 h1, h2, h3, h4 {
-    font-family: 'georgia';
     font-weight: normal
 }
 
 a {
     color: #69d;
     text-decoration: none
+}
+
+.form-row {
+    padding: .2em
+}
+.form-row * {
+    vertical-align: top
+}
+.form-row label {
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 1em;
+    text-align: right;
+    width: 10em
+}
+.form-row input, .form-row textarea,
+.form-submitrow input {
+    background: #ddd;
+    border: 1px solid #000;
+    border-radius: 5px;
+    font: 1.2em 'sans', sans-serif;
+    padding: .2em;
+}
+.form-row input:focus, .form-row textarea:focus,
+.form-submitrow input:focus, .form-submitrow input:hover {
+    background: #fff;
+    border-color: #69d;
+    outline: none;
+    -webkit-box-shadow: #69d 0 0 5px;
+}
+
+.form-submitrow {
+    text-align: right
+}
+.form-submitrow input {
+    cursor: pointer;
+    font-size: 1.4em;
+    padding: .4em 2em
 }
