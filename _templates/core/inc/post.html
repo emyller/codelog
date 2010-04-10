@@ -15,8 +15,8 @@
     <div class="post-text">{{ post.text|markdown:'safe,codehilite' }}</div>
     <p class="post-comments_count{% if show_comments %}-title{% endif %}">
         {% if comments %}{{ comments }} comment{{ comments|pluralize }} posted.
-        <a href="{% url core:post post.pk %}#newcomment">Write one</a>!
         {% else %}No comments yet.{% endif %}
+        <a href="{% url core:post post.pk %}#newcomment">Write one</a>!
     </p>
     {% if show_comments %}
     {% get_comment_list for post as comment_list %}
