@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 from django.views.generic import list_detail
+from django.views.decorators.cache import cache_page
 from django.db.models import Q
 from models import *
 
+@cache_page(5 * 10)
 def latest(req):
     posts = Post.objects.all()
     rpp = int(req.GET.get('rpp') or 5)
