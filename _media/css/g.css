@@ -9,6 +9,10 @@ a {
     text-decoration: none
 }
 
+label {
+    cursor: pointer
+}
+
 .form-row {
     padding: .2em
 }
@@ -16,7 +20,6 @@ a {
     vertical-align: top
 }
 .form-row label {
-    cursor: pointer;
     display: inline-block;
     margin-right: 1em;
     text-align: right;

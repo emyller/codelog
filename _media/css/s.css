@@ -113,14 +113,17 @@ body {
     margin-bottom: 1em;
     text-align: center
 }
-#paginator a, #paginator span {
+#paginator a, #paginator span,
+#paginator input, #paginator select {
     background: #222;
     border: 1px solid #999;
     border-radius: 4px;
     display: inline-block;
     padding: .3em .5em
 }
-#paginator a:hover {
+#paginator a:hover,
+#paginator input:hover, #paginator input:focus,
+#paginator select:hover, #paginator select:focus {
     background: #333;
     box-shadow: #69d 0 0 5px;
     -webkit-box-shadow: #69d 0 0 5px;
@@ -129,4 +132,10 @@ body {
 #paginator span {
     background: #666;
     cursor: default
+}
+#paginator form {
+    display: inline
+}
+#paginator input, #paginator select {
+    color: #fff
 }

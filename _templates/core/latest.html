@@ -10,7 +10,8 @@
 {% endfor %}
 <div id="paginator">
 {% if page_obj.has_previous %}
-    <a href="?rpp={{ rpp }}&page={{ page_obj.previous_page_number }}">Prev</a>
+    <a href="?rpp={{ rpp }}" title="newest posts">First</a>
+    <a href="?rpp={{ rpp }}&page={{ page_obj.previous_page_number }}" title="previous page">«</a>
 {% endif %}
 {% for page_number in paginator.page_range %}
     {% if page_number == page %}
@@ -20,7 +21,18 @@
     {% endif %}
 {% endfor %}
 {% if page_obj.has_next %}
-    <a href="?rpp={{ rpp }}&page={{ page_obj.next_page_number }}">Next</a>
+    <a href="?rpp={{ rpp }}&page={{ page_obj.next_page_number }}" title="next page">»</a>
+    <a href="?rpp={{ rpp }}&page={{ paginator.num_pages }}" title="oldest posts">Last</a>
+    - <form method="GET">
+        <input type="text" value="{{ page }}" name="page" maxlength="4" size="2"/>
+        with
+        <select name="rpp">
+            <option value="5"{% if rpp == 5 %} selected{% endif %}>5 posts per page</option>
+            <option value="10"{% if rpp == 10 %} selected{% endif %}>10 posts per page</option>
+            <option value="20"{% if rpp == 20 %} selected{% endif %}>20 posts per page</option>
+        </select>
+        <input type="submit" value="Go"/>
+    </form>
 {% endif %}
 </div>
 {% endblock %}
