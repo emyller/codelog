@@ -34,5 +34,34 @@
         {% endfor %}
         </dl>
         {% endif %}
+        <div id="comment-new" class="comment">
+            <h3>Write a comment</h3>
+            {% get_comment_form for post as form %}
+            <form action="{% comment_form_target %}" method="post">
+                {% csrf_token %}
+            {% for field in form %}{% if field.is_hidden %}
+                {{ field }}
+            {% endif %}{% endfor %}
+                <div class="form-row">
+                    {{ form.name.errors }}
+                    <label for="id_name">Name</label>{{ form.name }}
+                </div>
+                <div class="form-row">
+                    {{ form.email.errors }}
+                    <label for="id_email">E-mail</label>{{ form.email }}
+                </div>
+                <div class="form-row">
+                    {{ form.url.errors }}
+                    <label for="id_url">URL</label>{{ form.url }}
+                </div>
+                <div class="form-row">
+                    {{ form.comment.errors }}
+                    <label for="id_comment">Comment</label>{{ form.comment }}
+                </div>
+                <div class="form-submitrow">
+                    <input type="submit" name="post" value="Post"/>
+                </div>
+            </form>
+        </div>
     {% endif %}
 </div>

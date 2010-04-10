@@ -52,7 +52,8 @@ html {
     margin: 1.5em .5em .5em .5em;
     padding: 0
 }
-#comments {
+#comments,
+#comment-new {
     margin: .5em
 }
 .comment {
