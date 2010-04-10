@@ -22,9 +22,12 @@
 </div>
 {% block footer %}
 <div id="f">
-    <p>© 7Code</p>
+    <p>© <a href="http://emyller.net/">Evandro Myller</a></p>
 </div>
 {% endblock %}
+
+<a id="feedback-link" href="mailto:evandromyller@gmail.com">Feedback</a>
+<a id="rss-link" href="{% url core:rss %}">RSS</a>
 
 <script type="text/javascript" src="{{ MEDIA_URL }}js/mandoo/core.js"></script>
 <script type="text/javascript" src="{{ MEDIA_URL }}js/ux.js"></script>

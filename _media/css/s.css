@@ -123,8 +123,9 @@ body {
 }
 #paginator a:hover,
 #paginator input:hover, #paginator input:focus,
-#paginator select:hover, #paginator select:focus {
-    background: #333;
+#paginator select:hover, #paginator select:focus,
+#feedback-link:hover {
+    background-color: #333;
     box-shadow: #69d 0 0 5px;
     -webkit-box-shadow: #69d 0 0 5px;
     -moz-box-shadow: #69d 0 0 5px
@@ -138,4 +139,26 @@ body {
 }
 #paginator input, #paginator select {
     color: #fff
+}
+
+#feedback-link, #rss-link {
+    position: absolute;
+    position: fixed;
+    text-indent: -9999px;
+}
+#feedback-link {
+    background: #222 url('../pics/fb.png');
+    border: 1px solid #fff;
+    border-left: none;
+    height: 90px;
+    left: 0;
+    top: 30%;
+    width: 25px
+}
+#rss-link {
+    background: url('../pics/rss.png');
+    height: 24px;
+    right: 5px;
+    top: 5px;
+    width: 24px
 }
