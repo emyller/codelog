@@ -9,14 +9,14 @@
 
 <div class="post">
     <h2 class="post-title">{{ post.title }}</h2>
-    <p class="post-posted_at">{{ post.datetime }}</p>
+    <p class="post-posted_at">{{ post.datetime|date:'l, N d, Y - P' }}</p>
     <div class="post-text">
     <pre>{{ post.text }}</pre>
     </div>
     <p class="post-comments_count">
-    {% if comments %}{{ comments }} comment{{ comments|pluralize }} posted for this entry.
+    {% if comments %}{{ comments }} comment{{ comments|pluralize }} posted.
     {% else %}No comments yet.{% endif %}
-    <a href="">Write one</a>
+    <a href="">Write one</a>!
     </p>
 </div>
 {% endfor %}
