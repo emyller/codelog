@@ -33,8 +33,7 @@ MANAGERS = ADMINS = (
 )
 
 TIME_ZONE = 'America/Fortaleza'
-LANGUAGE_CODE = 'pt-br'
-USE_I18N = True
+LANGUAGE_CODE = 'en-us'
 
 MEDIA_ROOT = os.path.join(PATH, '_media')
 PROJECT_ALIAS = os.path.basename(PATH)
