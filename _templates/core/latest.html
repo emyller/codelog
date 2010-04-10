@@ -3,5 +3,9 @@
 {% block content %}
 {% for post in post_list %}
 {% include 'core/inc/post.html' %}
+{% empty %}
+<div class="post-text">
+    How sad, no posts here. Let's go <a href="{% url core:home %}">home</a>.
+</div>
 {% endfor %}
 {% endblock %}

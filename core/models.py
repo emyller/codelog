@@ -13,8 +13,17 @@ class Post(models.Model):
             title = self.title
         )
 
+    def get_absolute_url(self):
+        return '/post/' + str(self.pk)
+
     class Meta:
         ordering = '-datetime',
+
+    ## properties
+    @property
+    def html_text(self):
+        from django.contrib.markup.templatetags.markup import markdown
+        return markdown(self.text, 'safe,codehilite')
 
     ## display methods
     def tags_(self):
