@@ -59,6 +59,7 @@ body {
     -moz-box-shadow: #333 0 0 5px
 }
 .post-posted_at,
+.post-tags,
 .post-comments_count,
 .post-comments_count-title {
     color: #666;
@@ -67,7 +68,7 @@ body {
     padding: 0 1em
 }
 .post-posted_at {
-    text-align: right
+    float: right
 }
 
 .post-comments_count-title {

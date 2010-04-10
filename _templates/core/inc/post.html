@@ -6,6 +6,12 @@
         <a href="{% url core:post post.pk %}">{{ post.title }}</a>
     </h1>
     <p class="post-posted_at">{{ post.datetime|date:'l, N d, Y - P' }}</p>
+    <p class="post-tags">{% with post.tags.all as tags %}
+        {% if tags %}Tagged as {% for tag in tags %}
+            <a href="">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+        {% else %}No tags{% endif %}{% endwith %}
+    </p>
     <div class="post-text">{{ post.text|markdown:'safe,codehilite' }}</div>
     <p class="post-comments_count{% if show_comments %}-title{% endif %}">
         {% if comments %}{{ comments }} comment{{ comments|pluralize }} posted.
