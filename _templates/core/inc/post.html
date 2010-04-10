@@ -1,4 +1,4 @@
-{% load comments %}
+{% load comments markup %}
 {% get_comment_count for post as comments %}
 
 <div class="post">
@@ -6,9 +6,7 @@
         <a href="{% url core:post post.pk %}">{{ post.title }}</a>
     </h1>
     <p class="post-posted_at">{{ post.datetime|date:'l, N d, Y - P' }}</p>
-    <div class="post-text">
-        <pre>{{ post.text }}</pre>
-    </div>
+    <div class="post-text">{{ post.text|markdown }}</div>
     <p class="post-comments_count{% if show_comments %}-title{% endif %}">
         {% if comments %}{{ comments }} comment{{ comments|pluralize }} posted.
         <a href="{% url core:post post.pk %}#newcomment">Write one</a>!
