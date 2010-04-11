@@ -5,7 +5,10 @@
     <h1 class="post-title">
         <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
     </h1>
-    <p class="post-posted_at">{{ post.datetime|date:'l, N d, Y - P' }}</p>
+    <p class="post-posted_at">
+        Written by <strong>{% firstof post.author.first_name post.author.username %}</strong>
+        at {{ post.datetime|date:'l, N d, Y - P' }}
+    </p>
     <p class="post-tags">{% with post.tags.all as tags %}
         {% if tags %}Tagged as {% for tag in tags %}
             <a href="{% url core:tag_view tag %}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}

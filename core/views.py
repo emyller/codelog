@@ -6,7 +6,7 @@ from models import *
 
 @cache_page(20 * 60)
 def latest(req, tag_name=''):
-    posts = Post.objects.all()
+    posts = Post.objects.all().select_related()
     rpp = int(req.GET.get('rpp') or 5)
     page = int(req.GET.get('page') or 1)
 
@@ -35,7 +35,7 @@ def view_post(req, slug):
     post.views += 1
     post.save()
     return list_detail.object_detail(req,
-        queryset = Post.objects.all(),
+        queryset = Post.objects.all().select_related(),
         object_id = post.pk,
         template_name = 'core/post.html',
         template_object_name = 'post',
