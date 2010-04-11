@@ -32,8 +32,9 @@ def tag_view(req, tag_name):
 
 def view_post(req, slug):
     post = Post.objects.get(slug=slug)
-    post.views += 1
-    post.save()
+    if not req.user.is_authenticated():
+        post.views += 1
+        post.save()
     return list_detail.object_detail(req,
         queryset = Post.objects.all().select_related(),
         object_id = post.pk,
