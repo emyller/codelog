@@ -10,6 +10,7 @@ class Post(models.Model):
     datetime = models.DateTimeField()
     tags = models.ManyToManyField('Tag', blank=True, related_name='posts')
     views = models.IntegerField(default=0)
+    draft = models.BooleanField()
 
     def __unicode__(self):
         return '{title} ({date})'.format(

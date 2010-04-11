@@ -6,7 +6,7 @@ from models import *
 
 @cache_page(20 * 60)
 def latest(req, tag_name=''):
-    posts = Post.objects.all().select_related()
+    posts = Post.objects.filter(draft=False).select_related()
     rpp = int(req.GET.get('rpp') or 5)
     page = int(req.GET.get('page') or 1)
 
@@ -31,7 +31,7 @@ def tag_view(req, tag_name):
     return latest(req, tag_name)
 
 def view_post(req, slug):
-    post = Post.objects.get(slug=slug)
+    post = Post.objects.filter(draft=False).get(slug=slug)
     if not req.user.is_authenticated():
         post.views += 1
         post.save()
