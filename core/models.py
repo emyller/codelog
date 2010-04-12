@@ -35,7 +35,7 @@ class Post(models.Model):
         return ', '.join([tag[0] for tag in self.tags.values_list('name')])
 
 class Tag(models.Model):
-    name = models.CharField(max_length=40)
+    name = models.SlugField(max_length=40)
 
     def __unicode__(self):
         return self.name
