@@ -16,13 +16,16 @@ class Migration(SchemaMigration):
         from ..models import Post
         from django.template.defaultfilters import slugify
         posts = Post.objects.all()
-        i, l = .0, posts.count()
-        for post in posts:
-            post.slug = slugify(post.title)
-            post.save()
-            i += 1
-            print '{0:3}% #{1} - {2}'.format(i / l * 100, post.id, post)
-        print 'Done.'
+        if posts.count():
+            i, l = .0, posts.count()
+            for post in posts:
+                post.slug = slugify(post.title)
+                post.save()
+                i += 1
+                print '{0:3}% #{1} - {2}'.format(i / l * 100, post.id, post)
+            print 'Done.'
+        else:
+            print 'No posts yet.'
 
 
     def backwards(self, orm):
