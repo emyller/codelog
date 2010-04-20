@@ -2,12 +2,13 @@
 from django.contrib.syndication.views import Feed
 from models import Post
 
-class LatestPostsFeed(Feed):
-    title = 'EvandroMyller.blog latest posts'
-    link = '/latest/'
-    description = 'Latest entries from EvandroMyller.blog'
+class RSSFeed(Feed):
+    title = 'EvandroMyller.blog'
+    link = 'http://blog.emyller.net/latest/'
+    description = 'Latest posts from EvandroMyller.blog'
+    items = lambda self: Post.objects.all()
 
-    def items(self): return Post.objects.all()
-    def item_title(self, post): return post.title
-    def item_link(self, post): return post.get_absolute_url()
-    def item_description(self, post): return post.html_text
+    item_title       = lambda s, post: post.title
+    item_description = lambda s, post: post.html_text
+    item_author_name = lambda s, post: post.author.first_name or post.author.username
+    item_pubdate     = lambda s, post: post.datetime

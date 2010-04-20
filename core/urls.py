@@ -11,5 +11,5 @@ urlpatterns = patterns('core.views',
     url(r'^post/([\w-]+)$', 'view_post', name='post'),
 
     ## feeds
-    url(r'^rss$', feeds.LatestPostsFeed(), name='rss')
+    url(r'^rss$', feeds.RSSFeed(), name='rss')
 )
