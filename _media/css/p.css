@@ -1,8 +1,10 @@
 .codehilite {
     border-radius: 7px;
-    font-size: 12px;
     padding: 1em;
     position: relative
+}
+.codehilite pre, .codehilite textarea {
+    font-size: 12px
 }
 .codehilite .tools {
     position: absolute;
